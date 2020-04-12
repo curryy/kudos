@@ -5,6 +5,8 @@ export const Theme: DefaultTheme = {
     primary: "#A8996F",
     button: "#96459a",
     text: "#333333",
-    additionalText: "#616161"
+    additionalText: "#616161",
+    inputText: "#707070",
+    inputBorder: "#E5E1E1"
   }
 };
