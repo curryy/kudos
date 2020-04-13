@@ -10,7 +10,7 @@ export const Button = styled(ButtonComponent)`
       backgroundColor: _.theme.colors.primary
     },
     "&:focus:not(:disabled):not(.disabled), &:not(:disabled):not(.disabled)": {
-      backgroundColor: _.theme.colors.button
+      backgroundColor: _.theme.colors.secondary
     }
   })}
 `;
