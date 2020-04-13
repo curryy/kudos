@@ -21,18 +21,30 @@ export const Select: React.FC<Props> = ({
   noValueText = "Wybierz..."
 }) => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const element = React.useRef<HTMLDivElement>(null);
   const selected = React.useMemo(
     () => options.find(({ key }) => key === value),
     [value]
   );
 
+  React.useEffect(() => {
+    const onClickOutside = (e: MouseEvent) => {
+      if (!element.current?.contains(e.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener("click", onClickOutside);
+    return () => {
+      window.removeEventListener("click", onClickOutside);
+    };
+  }, []);
   const onOptionClick = (option: Option) => {
     setIsOpen(false);
     onChange(option.key);
   };
 
   return (
-    <S.Container>
+    <S.Container ref={element}>
       <S.Select aria-expanded={isOpen} onClick={() => setIsOpen(!isOpen)}>
         <S.Option as="div">
           {selected?.icon}
