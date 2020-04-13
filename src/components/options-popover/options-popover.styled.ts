@@ -1,7 +1,16 @@
 import styled from "styled-components";
-import Popover from "react-bootstrap/Popover";
+import PopoverComponent from "react-bootstrap/Popover";
 
-export const OptionsContainer = styled(Popover.Content)`
+export const Popover = styled(PopoverComponent)`
+  ${_ => ({
+    border: `1px solid ${_.theme.colors.lightBorder}`,
+    ".arrow:before": {
+      borderLeftColor: _.theme.colors.lightBorder
+    }
+  })}
+`;
+
+export const OptionsContainer = styled(PopoverComponent.Content)`
   padding: 0;
   border-radius: inherit;
 `;

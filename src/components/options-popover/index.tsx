@@ -4,7 +4,7 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Popover from "react-bootstrap/Popover";
 import { Placement } from "react-bootstrap/Overlay";
 
-type Option = {
+export type Option = {
   label: string;
   action: () => void;
 };
@@ -27,7 +27,7 @@ export const OptionsPopover: React.FC<Props> = ({
       trigger="click"
       placement={placement}
       overlay={
-        <Popover id={popoverId}>
+        <S.Popover id={popoverId}>
           <S.OptionsContainer>
             {options.map(option => (
               <S.Option key={option.label} onClick={option.action}>
@@ -35,7 +35,7 @@ export const OptionsPopover: React.FC<Props> = ({
               </S.Option>
             ))}
           </S.OptionsContainer>
-        </Popover>
+        </S.Popover>
       }
     >
       {children}
