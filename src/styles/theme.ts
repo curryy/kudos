@@ -7,6 +7,8 @@ export const Theme: DefaultTheme = {
     text: "#333333",
     additionalText: "#616161",
     inputText: "#707070",
-    inputBorder: "#E5E1E1"
+    inputBorder: "#E5E1E1",
+    background: "#ffffff",
+    error: "#b53b2c"
   }
 };

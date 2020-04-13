@@ -7,6 +7,10 @@ declare module "styled-components" {
       button: string;
       text: string;
       additionalText: string;
+      inputText: string;
+      inputBorder: string;
+      background: string;
+      error: string;
     };
   }
 }

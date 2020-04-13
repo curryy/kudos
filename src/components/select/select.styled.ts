@@ -51,6 +51,7 @@ export const List = styled.ul<{ isOpen: boolean }>`
   border-bottom-left-radius: 3px;
   border-top: none;
   ${_ => ({
+    backgroundColor: _.theme.colors.background,
     maxHeight: _.isOpen ? "300px" : 0,
     border: _.isOpen
       ? `1px solid ${_.theme.colors.inputBorder}`
