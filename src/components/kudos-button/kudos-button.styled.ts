@@ -36,12 +36,6 @@ export const Text = styled.div<{ bold?: boolean }>`
   })}
 `;
 
-export const Subtitle = styled.div`
-  text-align: center;
-  font-size: 0.875rem;
-  font-weight: 600;
-`;
-
 export const Image = styled.div`
   svg {
     position: absolute;
