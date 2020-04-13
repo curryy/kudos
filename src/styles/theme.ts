@@ -9,6 +9,7 @@ export const Theme: DefaultTheme = {
     inputText: "#707070",
     inputBorder: "#E5E1E1",
     background: "#ffffff",
-    error: "#b53b2c"
+    error: "#b53b2c",
+    lightBorder: "#eeeeee"
   }
 };

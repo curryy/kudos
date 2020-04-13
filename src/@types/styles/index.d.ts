@@ -11,6 +11,7 @@ declare module "styled-components" {
       inputBorder: string;
       background: string;
       error: string;
+      lightBorder: string;
     };
   }
 }
