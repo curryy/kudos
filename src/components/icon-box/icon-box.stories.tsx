@@ -11,4 +11,5 @@ storiesOf("IconBox", module)
   ))
   .add("IconBox with onClick action", () => (
     <IconBox icon={faTimes} color="text" onClick={() => {}} />
-  ));
+  ))
+  .add("IconBox with text", () => <IconBox icon={faCity} text="Marketing" />);

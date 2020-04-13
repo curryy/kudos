@@ -8,14 +8,19 @@ type Props = {
   icon: IconDefinition;
   color?: IconColor;
   onClick?: (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => void;
+  text?: string;
 };
 
 export const IconBox: React.FC<Props> = ({
   icon,
   color = "primary",
-  onClick
+  onClick,
+  text
 }) => {
   return (
-    <S.IconBox onClick={onClick} size={undefined} icon={icon} color={color} />
+    <S.Container>
+      <S.IconBox onClick={onClick} icon={icon} color={color} />
+      <S.Text color={color}>{text}</S.Text>
+    </S.Container>
   );
 };
