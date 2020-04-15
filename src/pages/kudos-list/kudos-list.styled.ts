@@ -25,3 +25,24 @@ export const CreateButton = styled(Link)`
     justify-content: space-between;
   }
 `;
+
+export const KudosContent = styled.div`
+  padding: 1rem;
+`;
+
+export const KudosHeading = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+`;
+
+export const CommentContainer = styled.div`
+  padding: 1rem;
+  display: flex;
+  > :first-child {
+    margin-right: 0.5rem;
+  }
+  > :nth-child(2) {
+    flex: 1;
+  }
+`;

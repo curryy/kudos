@@ -27,8 +27,8 @@ export const kudosTypes = [
 ];
 
 export const groups = [
-  { id: 1, name: "Marketing", icon: <IconBox icon={faBullhorn} /> },
-  { id: 2, name: "IT", icon: <IconBox icon={faDesktop} /> },
-  { id: 3, name: "Biuro", icon: <IconBox icon={faBuilding} /> },
-  { id: 4, name: "UI/UX", icon: <IconBox icon={faPalette} /> },
+  { id: 1, name: "Marketing", icon: faBullhorn },
+  { id: 2, name: "IT", icon: faDesktop },
+  { id: 3, name: "Biuro", icon: faBuilding },
+  { id: 4, name: "UI/UX", icon: faPalette },
 ];

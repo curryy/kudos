@@ -4,7 +4,7 @@ import {
   IconDefinition,
   faHeart,
   faComment,
-  faEllipsisV
+  faEllipsisV,
 } from "@fortawesome/free-solid-svg-icons";
 import { Option, OptionsPopover } from "../options-popover";
 import { IconBox } from "../icon-box";
@@ -17,7 +17,7 @@ type Props = {
   likeActive?: boolean;
   commentsCount: number;
   options: Option[];
-  key: string; // unique component key, e.g. post id
+  componentKey: string; // unique component key, e.g. post id
 };
 
 export const PostFooter: React.FC<Props> = ({
@@ -27,7 +27,7 @@ export const PostFooter: React.FC<Props> = ({
   commentsCount,
   onLikeClick,
   options,
-  key
+  componentKey,
 }) => {
   return (
     <S.Container>
@@ -42,7 +42,11 @@ export const PostFooter: React.FC<Props> = ({
           <S.Icon icon={faComment} />
           {commentsCount}
         </S.IconOption>
-        <OptionsPopover placement="left" popoverId={key} options={options}>
+        <OptionsPopover
+          placement="left"
+          popoverId={componentKey}
+          options={options}
+        >
           <S.IconOption onClick={onLikeClick}>
             <S.Icon icon={faEllipsisV} />
           </S.IconOption>

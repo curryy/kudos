@@ -27,7 +27,9 @@ const LoadingBackground = styled.div`
 `;
 
 export const Container = styled(Card)`
-  padding: 1rem;
+  .card-body {
+    padding: 1rem;
+  }
 `;
 
 export const AvatarContainer = styled.div`

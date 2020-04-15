@@ -1,17 +1,19 @@
+type PresonType = {
+  id: number;
+  name: string;
+  avatar: string;
+};
+
 export type Kudos = {
   description: string;
-  person: number;
+  person: PresonType;
   kudosType: number;
   group: number;
   id: number;
   likes: number;
   comments: number;
   created: string;
-  author: {
-    id: number;
-    name: string;
-    avatar: string;
-  };
+  author: PresonType;
 };
 
 export type Tag = {

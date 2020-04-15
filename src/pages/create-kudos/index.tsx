@@ -144,7 +144,7 @@ const CreateKudos = () => {
                     options={groups.map((group) => ({
                       key: group.id,
                       label: group.name,
-                      icon: group.icon,
+                      icon: <IconBox icon={group.icon} />,
                     }))}
                     value={props.values.group}
                     onChange={(value) => props.setFieldValue("group", value)}

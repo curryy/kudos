@@ -140,6 +140,7 @@ app.post("/kudos", (req, res) => {
     likes: Math.floor(Math.random() * 10) + 1,
     comments: Math.floor(Math.random() * 10) + 1,
     created: new Date().toISOString(),
+    person: people.find(({ id }) => id === req.body.person) || people[0],
     author: people[Math.floor(Math.random() * people.length) + 1],
   };
   console.log("Added:");

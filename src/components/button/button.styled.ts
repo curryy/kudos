@@ -6,6 +6,7 @@ export const Button = styled(ButtonComponent)`
   border: none;
   width: 100%;
   font-weight: 600;
+  color: #ffffff;
   ${(_) => ({
     "&:hover:not(:disabled):not(.disabled), &:active:not(:disabled):not(.disabled)": {
       backgroundColor: _.theme.colors.primary,

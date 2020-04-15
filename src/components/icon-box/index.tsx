@@ -15,7 +15,7 @@ export const IconBox: React.FC<Props> = ({
   icon,
   color = "primary",
   onClick,
-  text
+  text,
 }) => {
   return (
     <S.Container>

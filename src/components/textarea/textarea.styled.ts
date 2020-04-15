@@ -25,7 +25,7 @@ export const Textarea = styled(MentionsInput)<{ expanded: number }>`
   ${(_) => ({
     ...(_.expanded
       ? {
-          minHeight: "150px",
+          minHeight: "100px",
           paddingBottom: "34px",
         }
       : {
