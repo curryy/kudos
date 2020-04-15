@@ -5,6 +5,7 @@ import "./styles/global.scss";
 import { Theme } from "./styles/theme";
 import "emoji-mart/css/emoji-mart.css";
 import Container from "react-bootstrap/Container";
+import { AppLoader } from "./components";
 
 // Lazy loading pages
 const List = React.lazy(() => import("./pages/kudos-list"));
@@ -16,7 +17,7 @@ const App = () => {
     <BrowserRouter>
       <ThemeProvider theme={Theme}>
         <Container>
-          <Suspense fallback={<div>loading...</div>}>
+          <Suspense fallback={<AppLoader />}>
             <Switch>
               <Route exact path="/">
                 <List />

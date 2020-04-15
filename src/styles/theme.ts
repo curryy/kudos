@@ -6,7 +6,6 @@ export const Theme: DefaultTheme = {
     secondary: "#96459a",
     text: "#333333",
     additionalText: "#616161",
-    // TODO: maybe change this name to muted text
     inputText: "#707070",
     inputBorder: "#E5E1E1",
     background: "#ffffff",
