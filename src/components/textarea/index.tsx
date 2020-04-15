@@ -169,13 +169,14 @@ export const Textarea: React.FC<Props> = ({
         />
       </S.Textarea>
       <S.Options>
-        <S.Option>
+        <S.Option type="button">
           <AttachIcon />
         </S.Option>
-        <S.Option>
+        <S.Option type="button">
           <GifIcon />
         </S.Option>
         <S.Option
+          type="button"
           ref={emoijPickerButtonElem}
           onClick={() => setIsEmojiOpen(!isEmojiOpen)}
         >

@@ -7,8 +7,8 @@ export const Container = styled.div`
   border-radius: 4px;
   padding: 4px 8px;
   position: relative;
-  ${_ => ({
-    border: `1px solid ${_.theme.colors.inputBorder}`
+  ${(_) => ({
+    border: `1px solid ${_.theme.colors.inputBorder}`,
   })}
 `;
 
@@ -23,9 +23,10 @@ export const Input = styled.input`
 export const Menu = styled.div`
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
+  z-index: 5;
 
-  ${_ => ({
-    border: `1px solid ${_.theme.colors.lightBorder}`
+  ${(_) => ({
+    border: `1px solid ${_.theme.colors.lightBorder}`,
   })}
 `;
 
@@ -33,10 +34,10 @@ export const Option = styled.div<{ highlighted: boolean }>`
   cursor: pointer;
   padding: 2px 8px;
   font-size: 0.875rem;
-  ${_ => ({
+  ${(_) => ({
     backgroundColor: _.highlighted
       ? _.theme.colors.lightBorder
-      : _.theme.colors.background
+      : _.theme.colors.background,
   })}
 `;
 
@@ -46,25 +47,25 @@ export const Value = styled.div`
   padding: 2px 24px 2px 4px;
   margin-right: 4px;
   position: relative;
-  ${_ => ({
+  ${(_) => ({
     color: _.theme.colors.text,
     border: `1px solid ${_.theme.colors.primary}`,
-    backgroundColor: _.theme.colors.lightBorder
+    backgroundColor: _.theme.colors.lightBorder,
   })}
 `;
 
 export const RemoveIcon = styled(FontAwesomeIcon).attrs({
   icon: faTimes,
-  size: "sm"
+  size: "sm",
 })`
   cursor: pointer;
   right: 4px;
   top: 4px;
   position: absolute;
-  ${_ => ({
+  ${(_) => ({
     color: _.theme.colors.additionalText,
     "&:hover": {
-      color: _.theme.colors.text
-    }
+      color: _.theme.colors.text,
+    },
   })}
 `;

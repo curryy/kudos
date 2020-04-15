@@ -9,6 +9,7 @@ type Props = {
   ) => void;
   isActive?: boolean;
   icon: React.ReactNode;
+  className?: string;
 };
 
 export const KudosButton: React.FC<Props> = ({
@@ -16,10 +17,16 @@ export const KudosButton: React.FC<Props> = ({
   icon,
   title,
   subtitle,
-  isActive
+  isActive,
+  className,
 }) => {
   return (
-    <S.Container active={isActive} onClick={onClick}>
+    <S.Container
+      type="button"
+      className={className}
+      active={isActive}
+      onClick={onClick}
+    >
       <S.Image>{icon}</S.Image>
       <S.Text>{title}</S.Text>
       <S.Text bold>{subtitle}</S.Text>

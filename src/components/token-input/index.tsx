@@ -3,8 +3,8 @@ import * as S from "./token-input.styled";
 import Autocomplete from "react-autocomplete";
 
 type Option = {
-  key: number;
-  label: string;
+  id: number;
+  display: string;
 };
 
 type Props = {
@@ -21,9 +21,9 @@ export const TokenInput: React.FC<Props> = ({ options, value, onChange }) => {
   };
 
   const selectValue = (value: string) => {
-    const selectedValue = options.find(({ label }) => label === value);
+    const selectedValue = options.find(({ display }) => display === value);
     if (selectedValue) {
-      onChange(selectedValue.key);
+      onChange(selectedValue.id);
     }
   };
 
@@ -32,7 +32,7 @@ export const TokenInput: React.FC<Props> = ({ options, value, onChange }) => {
     setInputValue(e.target.value);
   };
 
-  const selectedLabel = options.find(({ key }) => key === value)?.label;
+  const selectedLabel = options.find(({ id }) => id === value)?.display;
 
   const renderInput: (
     props: React.HTMLProps<HTMLInputElement>
@@ -62,15 +62,15 @@ export const TokenInput: React.FC<Props> = ({ options, value, onChange }) => {
   return (
     <Autocomplete
       wrapperStyle={{ width: "100%", position: "relative" }}
-      getItemValue={item => item.label}
+      getItemValue={(item) => item.display}
       items={options}
       value={inputValue}
       onChange={handleChange}
       onSelect={selectValue}
       renderInput={renderInput}
       renderItem={(item, isHighlighted) => (
-        <S.Option highlighted={isHighlighted} key={item.key}>
-          {item.label}
+        <S.Option highlighted={isHighlighted} key={item.id}>
+          {item.display}
         </S.Option>
       )}
       renderMenu={(items, value, style) => {
@@ -82,7 +82,7 @@ export const TokenInput: React.FC<Props> = ({ options, value, onChange }) => {
               right: 0,
               top: undefined,
               position: "absolute" as "absolute",
-              minWidth: undefined
+              minWidth: undefined,
             }}
             children={items}
           />

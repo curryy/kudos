@@ -83,6 +83,7 @@ export const EmojiPickerContainer = styled.div`
   position: absolute;
   right: 0px;
   margin-top: 24px;
+  z-index: 5;
   top: 0;
   .emoji-mart-title-label {
     display: none;

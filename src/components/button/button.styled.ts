@@ -4,13 +4,14 @@ import styled from "styled-components";
 export const Button = styled(ButtonComponent)`
   border-radius: 6px;
   border: none;
+  width: 100%;
   font-weight: 600;
-  ${_ => ({
+  ${(_) => ({
     "&:hover:not(:disabled):not(.disabled), &:active:not(:disabled):not(.disabled)": {
-      backgroundColor: _.theme.colors.primary
+      backgroundColor: _.theme.colors.primary,
     },
     "&:focus:not(:disabled):not(.disabled), &:not(:disabled):not(.disabled)": {
-      backgroundColor: _.theme.colors.secondary
-    }
+      backgroundColor: _.theme.colors.secondary,
+    },
   })}
 `;

@@ -16,7 +16,6 @@ const tagsData = [
   { id: 1, display: "praca" },
   { id: 4, display: "komputer" },
   { id: 5, display: "IT" },
-  { id: 3, display: "wakacje" },
 ];
 storiesOf("Textarea", module)
   .add("Textarea with mentions, hashtags and emoji", () => {

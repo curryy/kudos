@@ -9,9 +9,9 @@ storiesOf("TokenInput", module).add("Standard select", () => {
   return (
     <TokenInput
       options={[
-        { key: 1, label: "abc" },
-        { key: 2, label: "def" },
-        { key: 3, label: "ghi" }
+        { id: 1, display: "abc" },
+        { id: 2, display: "def" },
+        { id: 3, display: "ghi" },
       ]}
       value={value}
       onChange={setValue}

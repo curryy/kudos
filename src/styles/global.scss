@@ -2,6 +2,15 @@ $font-family-sans-serif: "Poppins", sans-serif;
 
 $input-btn-padding-x: 1.5rem;
 $input-btn-font-size: 0.875rem;
-
+$body-bg: #fafafa;
+$body-color: #333333;
 $card-border-color: #eeeeee;
+
+$container-max-widths: (
+  sm: 540px,
+  md: 540px,
+  lg: 540px,
+  xl: 540px,
+);
+
 @import "~bootstrap/scss/bootstrap";

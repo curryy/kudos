@@ -4,6 +4,7 @@ import { ThemeProvider } from "styled-components";
 import "./styles/global.scss";
 import { Theme } from "./styles/theme";
 import "emoji-mart/css/emoji-mart.css";
+import Container from "react-bootstrap/Container";
 
 // Lazy loading pages
 const List = React.lazy(() => import("./pages/kudos-list"));
@@ -14,19 +15,21 @@ const App = () => {
   return (
     <BrowserRouter>
       <ThemeProvider theme={Theme}>
-        <Suspense fallback={<div>loading...</div>}>
-          <Switch>
-            <Route exact path="/">
-              <List />
-            </Route>
-            <Route exact path="/create">
-              <Create />
-            </Route>
-            <Route>
-              <NotFound />
-            </Route>
-          </Switch>
-        </Suspense>
+        <Container>
+          <Suspense fallback={<div>loading...</div>}>
+            <Switch>
+              <Route exact path="/">
+                <List />
+              </Route>
+              <Route exact path="/create">
+                <Create />
+              </Route>
+              <Route>
+                <NotFound />
+              </Route>
+            </Switch>
+          </Suspense>
+        </Container>
       </ThemeProvider>
     </BrowserRouter>
   );

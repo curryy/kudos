@@ -12,9 +12,9 @@ export const Image = styled.img<{ size: AvatarSize }>`
   object-fit: cover;
   object-position: center;
   margin-right: 0.5rem;
-  ${_ => ({
+  ${(_) => ({
     width: _.size === "small" ? "32px" : "40px",
-    height: _.size === "small" ? "32px" : "40px"
+    height: _.size === "small" ? "32px" : "40px",
   })}
 `;
 
@@ -24,14 +24,16 @@ export const TextsContainer = styled.div`
 
 export const Title = styled.div`
   font-weight: bold;
-  ${_ => ({
-    color: _.theme.colors.text
+  text-align: left;
+  ${(_) => ({
+    color: _.theme.colors.text,
   })}
 `;
 
 export const Subtitle = styled.div`
   font-size: 0.875rem;
-  ${_ => ({
-    color: _.theme.colors.inputText
+  text-align: left;
+  ${(_) => ({
+    color: _.theme.colors.inputText,
   })}
 `;
