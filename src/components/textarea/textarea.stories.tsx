@@ -18,9 +18,8 @@ const tagsData = [
   { id: 5, display: "IT" },
   { id: 3, display: "wakacje" },
 ];
-storiesOf("Textarea", module).add(
-  "Textarea with mentions, hashtags and emoji",
-  () => {
+storiesOf("Textarea", module)
+  .add("Textarea with mentions, hashtags and emoji", () => {
     const [value, setValue] = React.useState("");
 
     return (
@@ -31,5 +30,17 @@ storiesOf("Textarea", module).add(
         onChange={setValue}
       />
     );
-  }
-);
+  })
+  .add("Textarea that expand onFocus", () => {
+    const [value, setValue] = React.useState("");
+    return (
+      <Textarea
+        placeholder="Napisz komentarz..."
+        expandable
+        tags={tagsData}
+        people={peopleData}
+        value={value}
+        onChange={setValue}
+      />
+    );
+  });

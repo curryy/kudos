@@ -5,24 +5,43 @@ export const Container = styled.div`
   position: relative;
 `;
 
-export const Textarea = styled(MentionsInput)`
-  padding-bottom: 34px;
-  min-height: 150px;
+export const Textarea = styled(MentionsInput)<{ expanded: number }>`
   font-size: 0.875rem;
+  transition: min-height 0.3s ease;
+  > :nth-child(2) {
+    margin-top: 24px !important;
+  }
   > div:first-child {
-    padding: 5px;
+    padding: 9px;
   }
 
   textarea {
-    padding: 4px;
+    padding: 8px;
     border-radius: 6px;
     &:focus {
       outline: none;
     }
-    ${(_) => ({
-      border: `1px solid ${_.theme.colors.inputBorder}`,
-    })}
   }
+  ${(_) => ({
+    ...(_.expanded
+      ? {
+          minHeight: "150px",
+          paddingBottom: "34px",
+        }
+      : {
+          minHeight: "40px",
+        }),
+    textarea: {
+      "&::placeholder": {
+        color: _.theme.colors.additionalText,
+        opacity: 0.5,
+      },
+      color: _.theme.colors.text,
+      border: `1px solid ${
+        _.expanded ? _.theme.colors.inputBorder : _.theme.colors.lightBorder
+      }`,
+    },
+  })}
 `;
 
 export const Suggestion = styled.span<{ focused: boolean }>`
@@ -36,7 +55,6 @@ export const Suggestion = styled.span<{ focused: boolean }>`
 export const Options = styled.div`
   position: absolute;
   bottom: 8px;
-  left: 16px;
   right: 16px;
   display: flex;
   justify-content: flex-end;

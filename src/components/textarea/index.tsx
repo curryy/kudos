@@ -1,7 +1,7 @@
 import { faSmile } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import emojiData from "emoji-datasource";
-import { EmojiData, emojiIndex, Picker } from "emoji-mart";
+import { EmojiData, Picker } from "emoji-mart";
 import React from "react";
 import { Mention, SuggestionDataItem } from "react-mentions";
 import { useTheme } from "styled-components";
@@ -19,6 +19,8 @@ type Props = {
   tags: MentionData[];
   value?: string;
   onChange: (newValue: string) => void;
+  placeholder?: string;
+  expandable?: boolean;
 };
 
 export const Textarea: React.FC<Props> = ({
@@ -26,16 +28,27 @@ export const Textarea: React.FC<Props> = ({
   value,
   people,
   tags,
+  placeholder,
+  expandable,
 }) => {
   const iconTag = " ... ";
   const theme = useTheme();
-  const [emojiOpen, setEmojiOpen] = React.useState(false);
+  const [isExpanded, setIsExpanded] = React.useState(!expandable);
+  const [isEmojiOpen, setIsEmojiOpen] = React.useState(false);
   const emoijPickerButtonElem = React.useRef<HTMLButtonElement>(null);
   const emoijPickerElem = React.useRef<HTMLDivElement>(null);
   const textareaElem = React.useRef<HTMLTextAreaElement>(null);
 
   useClickOutside([emoijPickerElem, emoijPickerButtonElem], () =>
-    setEmojiOpen(false)
+    setIsEmojiOpen(false)
+  );
+  useClickOutside(
+    [textareaElem, emoijPickerElem, emoijPickerButtonElem],
+    () => {
+      if (expandable) {
+        setIsExpanded(false);
+      }
+    }
   );
 
   const mentionStyle = React.useMemo(
@@ -119,6 +132,13 @@ export const Textarea: React.FC<Props> = ({
   return (
     <S.Container>
       <S.Textarea
+        onFocus={() => {
+          if (expandable) {
+            setIsExpanded(true);
+          }
+        }}
+        expanded={isExpanded ? 1 : 0}
+        placeholder={placeholder}
         inputRef={textareaElem}
         allowSpaceInQuery
         value={value}
@@ -157,11 +177,11 @@ export const Textarea: React.FC<Props> = ({
         </S.Option>
         <S.Option
           ref={emoijPickerButtonElem}
-          onClick={() => setEmojiOpen(!emojiOpen)}
+          onClick={() => setIsEmojiOpen(!isEmojiOpen)}
         >
           <FontAwesomeIcon icon={faSmile} />
         </S.Option>
-        {emojiOpen ? (
+        {isEmojiOpen ? (
           <S.EmojiPickerContainer ref={emoijPickerElem}>
             <Picker showSkinTones={false} onSelect={onEmojiClick} />
           </S.EmojiPickerContainer>
