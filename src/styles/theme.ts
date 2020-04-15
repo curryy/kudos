@@ -11,6 +11,6 @@ export const Theme: DefaultTheme = {
     inputBorder: "#E5E1E1",
     background: "#ffffff",
     error: "#b53b2c",
-    lightBorder: "#eeeeee"
-  }
+    lightBorder: "#eeeeee",
+  },
 };
