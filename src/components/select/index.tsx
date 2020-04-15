@@ -1,6 +1,7 @@
 import React from "react";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import * as S from "./select.styled";
+import { useClickOutside } from "../../hooks/use-click-outside";
 
 type Option = {
   key: string | number;
@@ -18,7 +19,7 @@ export const Select: React.FC<Props> = ({
   value,
   onChange,
   options,
-  noValueText = "Wybierz..."
+  noValueText = "Wybierz...",
 }) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const element = React.useRef<HTMLDivElement>(null);
@@ -27,17 +28,8 @@ export const Select: React.FC<Props> = ({
     [value]
   );
 
-  React.useEffect(() => {
-    const onClickOutside = (e: MouseEvent) => {
-      if (!element.current?.contains(e.target as Node)) {
-        setIsOpen(false);
-      }
-    };
-    window.addEventListener("click", onClickOutside);
-    return () => {
-      window.removeEventListener("click", onClickOutside);
-    };
-  }, []);
+  useClickOutside([element], () => setIsOpen(false));
+
   const onOptionClick = (option: Option) => {
     setIsOpen(false);
     onChange(option.key);
@@ -53,7 +45,7 @@ export const Select: React.FC<Props> = ({
         <S.Chevron icon={faChevronDown} />
       </S.Select>
       <S.List isOpen={isOpen}>
-        {options.map(option => (
+        {options.map((option) => (
           <S.Option onClick={() => onOptionClick(option)} key={option.key}>
             {option.icon}
             {option.label}

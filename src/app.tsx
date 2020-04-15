@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import "./styles/global.scss";
 import { Theme } from "./styles/theme";
+import "emoji-mart/css/emoji-mart.css";
 
 // Lazy loading pages
 const List = React.lazy(() => import("./pages/kudos-list"));

@@ -37,6 +37,9 @@ export const IconOption = styled.div`
   align-items: center;
   font-size: 0.75rem;
   ${_ => ({
+    [`:last-child ${Icon}`]: {
+      color: _.theme.colors.primary
+    },
     color: _.theme.colors.primary,
     ...(!!_.onClick
       ? {
