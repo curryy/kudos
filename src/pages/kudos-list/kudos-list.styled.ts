@@ -3,7 +3,7 @@ import Row from "react-bootstrap/Row";
 import { Link } from "react-router-dom";
 
 export const ContainerRow = styled(Row)`
-  padding: 72px 0;
+  padding: 2rem 0;
   > div {
     margin-bottom: 12px;
   }
