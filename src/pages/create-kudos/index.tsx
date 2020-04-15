@@ -1,22 +1,24 @@
 import React from "react";
 import * as S from "./create-kudos.styled";
-import { Heading } from "../../components/heading";
+import {
+  Heading,
+  IconBox,
+  FormControl,
+  Button,
+  Select,
+  ErrorMessage,
+  Textarea,
+  TokenInput,
+} from "../../components";
 import HandIcon from "../../assets/images/agreement.svg";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { IconBox } from "../../components/icon-box";
 import { useHistory } from "react-router-dom";
-import { Form, FormikProps, Formik, FormikHelpers } from "formik";
-import { FormControl } from "../../components/form-control";
-import { Textarea } from "../../components/textarea";
+import { Form, FormikProps, Formik } from "formik";
 import * as Yup from "yup";
-import { TokenInput } from "../../components/token-input";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { Button } from "../../components/button";
-import { Select } from "../../components/select";
 import { useGetPeople, useGetTags, useCreateKudos } from "../../services";
 import { kudosTypes, groups } from "../data";
-import { ErrorMessage } from "../../components/error-message";
 
 type FormValues = {
   description: string;

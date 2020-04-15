@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { Card } from "../../components/card";
-import { KudosButton as KudosButtonComponent } from "../../components/kudos-button";
+import { Card, KudosButton as KudosButtonComponent } from "../../components";
 
 export const Container = styled(Card)`
   margin: 4.5rem 0;

@@ -1,5 +1,5 @@
 import React from "react";
-import { IconBox } from "../components/icon-box";
+import { IconBox } from "../components";
 import {
   faBullhorn,
   faDesktop,

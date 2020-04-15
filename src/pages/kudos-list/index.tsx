@@ -1,12 +1,9 @@
 import React from "react";
 import Col from "react-bootstrap/Col";
 import * as S from "./kudos-list.styled";
-import { Card } from "../../components/card";
-import { Avatar } from "../../components/avatar";
+import { Card, Avatar, PostPlaceholder, ErrorMessage } from "../../components";
 import HandIcon from "../../assets/images/agreement-brown.svg";
 import { useGetKudos } from "../../services";
-import { PostPlaceholder } from "../../components/placeholder";
-import { ErrorMessage } from "../../components/error-message";
 
 const Error = () => (
   <ErrorMessage>Wystąpił błąd w czasie pobierania kudosów.</ErrorMessage>
