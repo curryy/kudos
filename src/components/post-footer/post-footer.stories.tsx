@@ -1,15 +1,15 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import { faCity, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faCity } from "@fortawesome/free-solid-svg-icons";
 
 import { PostFooter } from ".";
 
 storiesOf("Post footer", module).add("Example of post footer", () => (
   <PostFooter
+    componentKey="id1"
     icon={faCity}
     groupName="Marketing"
     likesCount={0}
-    componentKey="id1"
     onLikeClick={() => {}}
     commentsCount={1}
     options={[

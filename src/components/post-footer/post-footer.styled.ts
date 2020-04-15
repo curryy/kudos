@@ -7,8 +7,8 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
-  ${_ => ({
-    borderBottom: `1px solid ${_.theme.colors.lightBorder}`
+  ${(_) => ({
+    borderBottom: `1px solid ${_.theme.colors.lightBorder}`,
   })}
 `;
 
@@ -16,9 +16,12 @@ export const OptionsContainer = styled.div`
   display: flex;
 `;
 
-export const Icon = styled(FontAwesomeIcon)<{ active?: boolean }>`
-  ${_ => ({
-    color: _.active ? _.theme.colors.primary : _.theme.colors.lightBorder
+export const Icon = styled(FontAwesomeIcon)<{ active?: 0 | 1 }>`
+  ${(_) => ({
+    color: _.active ? _.theme.colors.primary : _.theme.colors.lightBorder,
+    "&:hover": {
+      color: _.active ? _.theme.colors.primary : _.theme.colors.inputBorder,
+    },
   })}
 `;
 
@@ -36,18 +39,15 @@ export const IconOption = styled.div`
   display: flex;
   align-items: center;
   font-size: 0.75rem;
-  ${_ => ({
+  ${(_) => ({
     [`:last-child ${Icon}`]: {
-      color: _.theme.colors.primary
+      color: _.theme.colors.primary,
     },
     color: _.theme.colors.primary,
     ...(!!_.onClick
       ? {
           cursor: "pointer",
-          "&:hover svg": {
-            color: _.theme.colors.inputBorder
-          }
         }
-      : {})
+      : {}),
   })}
 `;

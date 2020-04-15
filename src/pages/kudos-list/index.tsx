@@ -9,6 +9,7 @@ import {
   KudosImage,
   PostFooter,
   Textarea,
+  FormattedDescription,
 } from "../../components";
 import HandIcon from "../../assets/images/agreement-brown.svg";
 import { useGetKudos, useGetPeople, useGetTags } from "../../services";
@@ -87,7 +88,7 @@ const KudosList = () => {
                   />
                   <HandIcon />
                 </S.KudosHeading>
-                <p>{kudos.description}</p>
+                <FormattedDescription>{kudos.description}</FormattedDescription>
                 <KudosImage
                   icon={getKudosData(kudos.id).icon}
                   title={getKudosData(kudos.id).title}
@@ -100,13 +101,14 @@ const KudosList = () => {
                 groupName={getGroupData(kudos.group).name}
                 likesCount={kudos.likes}
                 commentsCount={kudos.comments}
-                onLikeClick={() =>
+                onLikeClick={() => {
+                  console.log(likedKudos);
                   likedKudos.includes(kudos.id)
                     ? setLikedKudos(
                         likedKudos.filter((elem) => elem !== kudos.id)
                       )
-                    : setLikedKudos([...likedKudos, kudos.id])
-                }
+                    : setLikedKudos([...likedKudos, kudos.id]);
+                }}
                 likeActive={likedKudos.includes(kudos.id)}
                 options={[
                   { label: "Usuń", action: () => {} },

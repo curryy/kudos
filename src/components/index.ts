@@ -14,3 +14,4 @@ export { PostFooter } from "./post-footer";
 export { Select } from "./select";
 export { Textarea } from "./textarea";
 export { TokenInput } from "./token-input";
+export { FormattedDescription } from "./formatted-description";

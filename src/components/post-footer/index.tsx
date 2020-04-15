@@ -28,17 +28,18 @@ export const PostFooter: React.FC<Props> = ({
   onLikeClick,
   options,
   componentKey,
+  likeActive,
 }) => {
   return (
     <S.Container>
       <IconBox icon={icon} text={groupName} />
       <S.OptionsContainer>
         <S.IconOption onClick={onLikeClick}>
-          <S.Icon icon={faHeart} />
+          <S.Icon active={likeActive ? 1 : 0} icon={faHeart} />
           {likesCount}
         </S.IconOption>
 
-        <S.IconOption onClick={onLikeClick}>
+        <S.IconOption>
           <S.Icon icon={faComment} />
           {commentsCount}
         </S.IconOption>
@@ -47,7 +48,7 @@ export const PostFooter: React.FC<Props> = ({
           popoverId={componentKey}
           options={options}
         >
-          <S.IconOption onClick={onLikeClick}>
+          <S.IconOption>
             <S.Icon icon={faEllipsisV} />
           </S.IconOption>
         </OptionsPopover>
