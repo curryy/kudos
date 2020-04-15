@@ -15,3 +15,10 @@ export const Heading = styled.div`
 export const KudosButton = styled(KudosButtonComponent)`
   margin-bottom: 1rem;
 `;
+export const Error = styled.div`
+  margin: 1rem 0;
+  font-size: 0.75rem;
+  ${(_) => ({
+    color: _.theme.colors.error,
+  })}
+`;

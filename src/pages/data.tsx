@@ -1,17 +1,17 @@
 import React from "react";
-import { IconBox } from "./components/icon-box";
+import { IconBox } from "../components/icon-box";
 import {
   faBullhorn,
   faDesktop,
   faBuilding,
   faPalette,
 } from "@fortawesome/free-solid-svg-icons";
-import ThanksIcon from "./aassets/images/undraw_true_love_cy8x.svg";
-import CongratsIcon from "./aassets/images/undraw_super_thank_you_obwk.svg";
-import TeamPlayerIcon from "./aassets/images/undraw_team_spirit_hrr4.svg";
-import PositiveIcon from "./aassets/images/undraw_positive_attitude_xaae.svg";
-import CollaborationIcon from "./aassets/images/undraw_real_time_collaboration_c62i.svg";
-import AwesomePersonIcon from "./aassets/images/undraw_teacher_35j2.svg";
+import ThanksIcon from "../assets/images/undraw_true_love_cy8x.svg";
+import CongratsIcon from "../assets/images/undraw_super_thank_you_obwk.svg";
+import TeamPlayerIcon from "../assets/images/undraw_team_spirit_hrr4.svg";
+import PositiveIcon from "../assets/images/undraw_positive_attitude_xaae.svg";
+import CollaborationIcon from "../assets/images/undraw_real_time_collaboration_c62i.svg";
+import AwesomePersonIcon from "../assets/images/undraw_teacher_35j2.svg";
 
 export const kudosTypes = [
   { id: 1, title: "Dziękuję Ci", icon: <ThanksIcon /> },

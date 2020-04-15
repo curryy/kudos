@@ -13,5 +13,8 @@ export const Button = styled(ButtonComponent)`
     "&:focus:not(:disabled):not(.disabled), &:not(:disabled):not(.disabled)": {
       backgroundColor: _.theme.colors.secondary,
     },
+    ":disabled": {
+      backgroundColor: _.theme.colors.inputBorder,
+    },
   })}
 `;

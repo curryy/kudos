@@ -1,7 +1,22 @@
 import express from "express";
+const bodyParser = require("body-parser");
 
 const app = express();
 const port = 3000;
+
+app.use(bodyParser.json());
+app.use(function(req, res, next) {
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8081");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "X-Requested-With,content-type"
+  );
+  next();
+});
 
 const kudosList = [];
 const people = [
@@ -114,14 +129,14 @@ const tags = [
   { id: 9, name: "kawa" },
 ];
 
-const kudos = [...kudosList];
-
-app.get("/kudos", (req, res) => res.send(kudos));
+app.get("/kudos", (req, res) => res.send(kudosList));
 app.post("/kudos", (req, res) => {
   const newKudos = {
     ...req.body,
-    id: kudos.length,
-    created: new Date(),
+    id: kudosList.length,
+    likes: Math.floor(Math.random() * 10) + 1,
+    comments: Math.floor(Math.random() * 10) + 1,
+    created: new Date().toISOString(),
     author: people[Math.floor(Math.random() * people.length) + 1],
   };
   console.log("Added:");

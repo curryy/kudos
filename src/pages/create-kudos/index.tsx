@@ -14,6 +14,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Button } from "../../components/button";
 import { Select } from "../../components/select";
+import { useGetPeople, useGetTags, useCreateKudos } from "../../services";
+import { kudosTypes, groups } from "../data";
 
 type FormValues = {
   description: string;
@@ -29,43 +31,20 @@ const ValidationSchema = Yup.object().shape({
   group: Yup.string().required("To pole jest wymagane"),
 });
 
-const peopleData = [
-  { id: 1, display: "Agata" },
-  { id: 2, display: "Anna" },
-  { id: 3, display: "Karol" },
-  { id: 4, display: "Paweł" },
-  { id: 5, display: "Karolina" },
-  { id: 6, display: "Wojtek" },
-];
-
-const tagsData = [
-  { id: 1, display: "praca" },
-  { id: 4, display: "komputer" },
-  { id: 5, display: "IT" },
-];
-
-const kudosTypes = [
-  { id: 1, title: "Dziękuję Ci", icon: <HandIcon /> },
-  { id: 2, title: "Dziękuję Ci 2", icon: <HandIcon /> },
-  { id: 3, title: "Dziękuję Ci 3", icon: <HandIcon /> },
-  { id: 4, title: "Dziękuję Ci 4", icon: <HandIcon /> },
-];
-
 const initialValues: FormValues = {
   description: "",
 };
 
 const CreateKudos = () => {
   const history = useHistory();
+  const { data: peopleData, error: peopleError } = useGetPeople();
+  const { data: tagsData, error: tagsError } = useGetTags();
+  const { error, loading, execute: createKudos } = useCreateKudos();
 
-  const handleSubmit = (
-    values: FormValues,
-    actions: FormikHelpers<FormValues>
-  ) => {
-    setTimeout(() => {
-      alert(JSON.stringify(values, null, 2));
-      actions.setSubmitting(false);
-    }, 1000);
+  const handleSubmit = (values: FormValues) => {
+    createKudos(values as Required<FormValues>).then(() => {
+      history.push("/");
+    });
   };
 
   return (
@@ -81,6 +60,23 @@ const CreateKudos = () => {
         />
       </S.Heading>
 
+      {(peopleError || tagsError) && (
+        <S.Error>
+          Coś poszło nie tak przy pobieraniu{" "}
+          {tagsError && peopleError
+            ? "tagów i osób"
+            : tagsError
+            ? "tagów"
+            : "osób"}
+          , formularz może nie działać prawidłowo. Spróbuj odświeżyć stronę.
+        </S.Error>
+      )}
+      {error && (
+        <S.Error>
+          Coś poszło nie tak przy dodawaniu kudosa. Odśwież stronę i spróbuj
+          jeszcze raz.
+        </S.Error>
+      )}
       <Formik
         validateOnBlur={false}
         validateOnChange={false}
@@ -142,10 +138,11 @@ const CreateKudos = () => {
                   label="Wybierz grupę"
                 >
                   <Select
-                    options={[
-                      { key: 1, label: "ABC", icon: <HandIcon /> },
-                      { key: 2, label: "DEF", icon: <HandIcon /> },
-                    ]}
+                    options={groups.map((group) => ({
+                      key: group.id,
+                      label: group.name,
+                      icon: group.icon,
+                    }))}
                     value={props.values.group}
                     onChange={(value) => props.setFieldValue("group", value)}
                   />
@@ -155,8 +152,8 @@ const CreateKudos = () => {
                 className="d-flex align-items-end"
                 xs={{ span: 4, offset: 3 }}
               >
-                <Button className="mb-3" type="submit">
-                  Opublikuj
+                <Button disabled={loading} className="mb-3" type="submit">
+                  {loading ? "Przesyłanie" : "Opublikuj"}
                 </Button>
               </Col>
             </Row>

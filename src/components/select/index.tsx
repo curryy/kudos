@@ -37,7 +37,11 @@ export const Select: React.FC<Props> = ({
 
   return (
     <S.Container ref={element}>
-      <S.Select aria-expanded={isOpen} onClick={() => setIsOpen(!isOpen)}>
+      <S.Select
+        type="button"
+        aria-expanded={isOpen}
+        onClick={() => setIsOpen(!isOpen)}
+      >
         <S.Option as="div">
           {selected?.icon}
           {selected?.label || noValueText}
