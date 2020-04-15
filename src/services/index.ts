@@ -8,10 +8,13 @@ const axios = Axios.create({
 configure({ axios });
 
 export const useGetKudos = () => {
-  return useAxios<Kudos[]>({
-    method: "GET",
-    url: "kudos/",
-  });
+  return useAxios<Kudos[]>(
+    {
+      method: "GET",
+      url: "kudos/",
+    },
+    { useCache: false }
+  );
 };
 
 export const useGetPeople = () => {

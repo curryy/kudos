@@ -9,8 +9,6 @@ const envKeys = Object.keys(env).reduce((prev, next) => {
   return prev;
 }, {});
 
-console.log(dotenv.config().parsed);
-console.log(envKeys);
 module.exports = {
   entry: path.resolve(__dirname, "src", "index.tsx"),
   output: {

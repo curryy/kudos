@@ -121,15 +121,18 @@ const tags = [
   { id: 1, name: "inspiracja" },
   { id: 2, name: "praca" },
   { id: 3, name: "rozwojosobisty" },
-  { id: 4, name: "job" },
-  { id: 5, name: "work" },
-  { id: 6, name: "biznes" },
-  { id: 7, name: "motywacja" },
-  { id: 8, name: "wiedza" },
-  { id: 9, name: "kawa" },
+  { id: 4, name: "biznes" },
+  { id: 5, name: "motywacja" },
+  { id: 6, name: "wiedza" },
+  { id: 7, name: "kawa" },
 ];
 
-app.get("/kudos", (req, res) => res.send(kudosList));
+app.get("/kudos", (req, res) => {
+  // Timeout added for loader testing purpose
+  setTimeout(() => {
+    res.send(kudosList);
+  }, 1000);
+});
 app.post("/kudos", (req, res) => {
   const newKudos = {
     ...req.body,

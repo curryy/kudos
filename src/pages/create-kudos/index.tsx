@@ -16,6 +16,7 @@ import { Button } from "../../components/button";
 import { Select } from "../../components/select";
 import { useGetPeople, useGetTags, useCreateKudos } from "../../services";
 import { kudosTypes, groups } from "../data";
+import { ErrorMessage } from "../../components/error-message";
 
 type FormValues = {
   description: string;
@@ -61,7 +62,7 @@ const CreateKudos = () => {
       </S.Heading>
 
       {(peopleError || tagsError) && (
-        <S.Error>
+        <ErrorMessage>
           Coś poszło nie tak przy pobieraniu{" "}
           {tagsError && peopleError
             ? "tagów i osób"
@@ -69,13 +70,13 @@ const CreateKudos = () => {
             ? "tagów"
             : "osób"}
           , formularz może nie działać prawidłowo. Spróbuj odświeżyć stronę.
-        </S.Error>
+        </ErrorMessage>
       )}
       {error && (
-        <S.Error>
+        <ErrorMessage>
           Coś poszło nie tak przy dodawaniu kudosa. Odśwież stronę i spróbuj
           jeszcze raz.
-        </S.Error>
+        </ErrorMessage>
       )}
       <Formik
         validateOnBlur={false}
@@ -130,7 +131,7 @@ const CreateKudos = () => {
                 />
               ))}
             </FormControl>
-            <Row>
+            <Row noGutters>
               <Col className="d-flex align-items-end" xs={5}>
                 <FormControl
                   error={props.errors.group}

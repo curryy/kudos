@@ -5,15 +5,28 @@ import { Card } from "../../components/card";
 import { Avatar } from "../../components/avatar";
 import HandIcon from "../../assets/images/agreement-brown.svg";
 import { useGetKudos } from "../../services";
+import { PostPlaceholder } from "../../components/placeholder";
+import { ErrorMessage } from "../../components/error-message";
+
+const Error = () => (
+  <ErrorMessage>Wystąpił błąd w czasie pobierania kudosów.</ErrorMessage>
+);
+const Loading = () => (
+  <>
+    <Col sm={12}>
+      <PostPlaceholder />
+    </Col>
+    <Col sm={12}>
+      <PostPlaceholder />
+    </Col>
+  </>
+);
 
 const KudosList = () => {
   const [{ data, loading, error }] = useGetKudos();
-  console.log(data);
-  console.log(loading);
-  console.log(error);
 
   return (
-    <S.ContainerRow>
+    <S.ContainerRow noGutters>
       <Col sm={12}>
         <S.CreateButton to="/create">
           <Card noPadding>
@@ -25,7 +38,9 @@ const KudosList = () => {
           </Card>
         </S.CreateButton>
       </Col>
-      <Col sm={12}>ABC</Col>
+      {error && <Error />}
+      {loading && <Loading />}
+
       <Col sm={12}>ABC</Col>
     </S.ContainerRow>
   );
