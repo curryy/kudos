@@ -13,11 +13,13 @@ export const Textarea = styled(MentionsInput)<{ expanded: number }>`
   }
   > div:first-child {
     padding: 9px;
+    word-break: break-all;
   }
 
   textarea {
     padding: 8px;
     border-radius: 6px;
+    word-break: break-all;
     &:focus {
       outline: none;
     }
