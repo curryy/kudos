@@ -60,3 +60,8 @@ yarn build
 ```
 
 Your code will be built in the dist/ directory.
+
+## Node
+
+Used node version: 12.13.0
+Used yarn version: 1.7.0
