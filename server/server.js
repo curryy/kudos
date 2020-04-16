@@ -18,7 +18,50 @@ app.use(function(req, res, next) {
   next();
 });
 
-const kudosList = [];
+const kudosList = [
+  {
+    description:
+      "Wielkie dzięki @[Przemysław Nowak](13) za współpracę przy ostatnim projekcie :[ ... ](ok_hand)Dzięki Twojej pomocy poradziłam sobie z badaniami i analizą. Mam nadzieję, że jeszcze wiele takich projektów przed nami :[ ... ](female-office-worker):[ ... ](female-office-worker):[ ... ](female-office-worker)",
+    person: {
+      id: 13,
+      name: "Przemysław Nowak",
+      avatar: "https://api.adorable.io/avatars/14",
+    },
+    kudosType: 5,
+    group: 4,
+    id: 0,
+    likes: 9,
+    comments: 2,
+    created: "2020-04-16T13:32:09.305Z",
+    author: {
+      id: 3,
+      name: "Idalia Stępień",
+      avatar: "https://api.adorable.io/avatars/4",
+    },
+  },
+
+  {
+    description:
+      ":[ ... ](tada):[ ... ](tada):[ ... ](tada) Gratuluje nowej posady! #[praca](2) #[inspiracja](1)",
+    person: {
+      id: 11,
+      name: "Ludwik Sadowska",
+      avatar: "https://api.adorable.io/avatars/12",
+    },
+    kudosType: 2,
+    group: 1,
+    id: 1,
+    likes: 6,
+    comments: 1,
+    created: "2020-04-16T13:45:09.305Z",
+    author: {
+      id: 19,
+      name: "Artur Sokołowski",
+      avatar: "https://api.adorable.io/avatars/20",
+    },
+  },
+];
+
 const people = [
   {
     id: 1,
@@ -141,7 +184,7 @@ app.post("/kudos", (req, res) => {
     comments: Math.floor(Math.random() * 10) + 1,
     created: new Date().toISOString(),
     person: people.find(({ id }) => id === req.body.person) || people[0],
-    author: people[Math.floor(Math.random() * people.length) + 1],
+    author: people[Math.floor(Math.random() * (people.length - 1)) + 1],
   };
   console.log("Added:");
   console.log(JSON.stringify(newKudos));

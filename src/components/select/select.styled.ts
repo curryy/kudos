@@ -30,9 +30,9 @@ export const Select = styled.button`
       transform: rotate(-180deg);
     }
   }
-  ${_ => ({
+  ${(_) => ({
     color: _.theme.colors.inputText,
-    border: `1px solid ${_.theme.colors.inputBorder}`
+    border: `1px solid ${_.theme.colors.inputBorder}`,
   })}
 `;
 
@@ -50,12 +50,13 @@ export const List = styled.ul<{ isOpen: boolean }>`
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
   border-top: none;
-  ${_ => ({
+  overflow: auto;
+  ${(_) => ({
     backgroundColor: _.theme.colors.background,
-    maxHeight: _.isOpen ? "300px" : 0,
+    maxHeight: _.isOpen ? "90px" : 0,
     border: _.isOpen
       ? `1px solid ${_.theme.colors.inputBorder}`
-      : "1px solid transparent"
+      : "1px solid transparent",
   })}
   li {
     padding: 4px;
@@ -69,10 +70,10 @@ export const Option = styled.li`
   svg {
     margin-right: 8px;
   }
-  ${_ => ({
+  ${(_) => ({
     color: _.theme.colors.inputText,
     "&:hover": {
-      color: _.theme.colors.text
-    }
+      color: _.theme.colors.text,
+    },
   })}
 `;

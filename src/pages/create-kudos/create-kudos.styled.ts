@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Card, KudosButton as KudosButtonComponent } from "../../components";
 
 export const Container = styled(Card)`
-  margin: 2rem 0;
+  margin: 2rem 0 4rem;
 `;
 export const Heading = styled.div`
   display: flex;

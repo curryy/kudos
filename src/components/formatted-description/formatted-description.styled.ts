@@ -12,11 +12,9 @@ export const Tag = styled.span`
 `;
 
 export const Text = styled.span`
-  white-space: pre;
+  white-space: pre-line;
 `;
 
 export const Container = styled.p`
   font-size: 0.875rem;
-  display: flex;
-  flex-wrap: wrap;
 `;

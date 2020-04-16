@@ -76,62 +76,68 @@ const KudosList = () => {
       {loading && <Loading />}
 
       {data &&
-        data.map((kudos) => (
-          <Col key={kudos.id} sm={12}>
-            <Card noPadding>
-              <S.KudosContent>
-                <S.KudosHeading>
-                  <Avatar
-                    imageSrc={kudos.author.avatar}
-                    title={kudos.author.name}
-                    subtitle={calculateDate(kudos.created)}
+        data
+          .sort(
+            (a, b) =>
+              new Date(b.created).getTime() - new Date(a.created).getTime()
+          )
+          .map((kudos) => (
+            <Col key={kudos.id} sm={12}>
+              <Card noPadding>
+                <S.KudosContent>
+                  <S.KudosHeading>
+                    <Avatar
+                      imageSrc={kudos.author.avatar}
+                      title={kudos.author.name}
+                      subtitle={calculateDate(kudos.created)}
+                    />
+                    <HandIcon />
+                  </S.KudosHeading>
+                  <FormattedDescription>
+                    {kudos.description}
+                  </FormattedDescription>
+                  <KudosImage
+                    icon={getKudosData(kudos.kudosType).icon}
+                    title={getKudosData(kudos.kudosType).title}
+                    subtitle={kudos.person.name}
                   />
-                  <HandIcon />
-                </S.KudosHeading>
-                <FormattedDescription>{kudos.description}</FormattedDescription>
-                <KudosImage
-                  icon={getKudosData(kudos.id).icon}
-                  title={getKudosData(kudos.id).title}
-                  subtitle={kudos.person.name}
+                </S.KudosContent>
+                <PostFooter
+                  componentKey={kudos.id.toString()}
+                  icon={getGroupData(kudos.group).icon}
+                  groupName={getGroupData(kudos.group).name}
+                  likesCount={kudos.likes}
+                  commentsCount={kudos.comments}
+                  onLikeClick={() => {
+                    likedKudos.includes(kudos.id)
+                      ? setLikedKudos(
+                          likedKudos.filter((elem) => elem !== kudos.id)
+                        )
+                      : setLikedKudos([...likedKudos, kudos.id]);
+                  }}
+                  likeActive={likedKudos.includes(kudos.id)}
+                  options={[
+                    { label: "Usuń", action: () => {} },
+                    {
+                      label: "Edytuj",
+                      action: () => {},
+                    },
+                  ]}
                 />
-              </S.KudosContent>
-              <PostFooter
-                componentKey={kudos.id.toString()}
-                icon={getGroupData(kudos.group).icon}
-                groupName={getGroupData(kudos.group).name}
-                likesCount={kudos.likes}
-                commentsCount={kudos.comments}
-                onLikeClick={() => {
-                  console.log(likedKudos);
-                  likedKudos.includes(kudos.id)
-                    ? setLikedKudos(
-                        likedKudos.filter((elem) => elem !== kudos.id)
-                      )
-                    : setLikedKudos([...likedKudos, kudos.id]);
-                }}
-                likeActive={likedKudos.includes(kudos.id)}
-                options={[
-                  { label: "Usuń", action: () => {} },
-                  {
-                    label: "Edytuj",
-                    action: () => {},
-                  },
-                ]}
-              />
-              <S.CommentContainer>
-                <Avatar size="small" imageSrc={avatarUrl} />
-                <Textarea
-                  placeholder="Napisz komentarz..."
-                  expandable
-                  value={commentText}
-                  onChange={setCommentText}
-                  people={peopleData}
-                  tags={tagsData}
-                />
-              </S.CommentContainer>
-            </Card>
-          </Col>
-        ))}
+                <S.CommentContainer>
+                  <Avatar size="small" imageSrc={avatarUrl} />
+                  <Textarea
+                    placeholder="Napisz komentarz..."
+                    expandable
+                    value={commentText}
+                    onChange={setCommentText}
+                    people={peopleData}
+                    tags={tagsData}
+                  />
+                </S.CommentContainer>
+              </Card>
+            </Col>
+          ))}
     </S.ContainerRow>
   );
 };

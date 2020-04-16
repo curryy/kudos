@@ -6,9 +6,9 @@ type Props = {
   children: string;
 };
 
-const descRegexp = /([#@:]\[[A-Za-z\s\.]+\]\([\d\w\_\-\+]+\))|((?![#@:]\[[A-Za-z\s\.]+\]\([\d\w\_\-\+]+\)).)*/g;
-const mentionRegexp = /(\@\[[A-Za-z\s\.]+\]\([\d]+\))/g;
-const tagRegexp = /(\#\[[A-Za-z\s\.]+\]\([\d]+\))/g;
+const descRegexp = /([#@:]\[[A-Za-z\sĄąĘęÓóŁłŚśŻżŹźĆćŃń\.]+\]\([\d\w\_\-\+]+\))|((?![#@:]\[[A-Za-z\s\.]+\]\([\d\w\_\-\+]+\)).)*/g;
+const mentionRegexp = /(\@\[[A-Za-z\sĄąĘęÓóŁłŚśŻżŹźĆćŃń\.]+\]\([\d]+\))/g;
+const tagRegexp = /(\#\[[A-Za-z\sĄąĘęÓóŁłŚśŻżŹźĆćŃń\.]+\]\([\d]+\))/g;
 const emojiRegexp = /(\:\[\s\.\.\.\s\]\([\d\w\_\-\+]+\))/g;
 
 export const FormattedDescription: React.FC<Props> = ({ children }) => {
